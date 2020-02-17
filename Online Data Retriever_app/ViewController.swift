@@ -18,7 +18,7 @@ class ViewController: UITableViewController {
         
         if let url = URL(string: urlString) {
             if let data = try? Data(contentsOf: url) {
-                //try parsing now
+            parse(json: data)
             }
         }
     }
@@ -31,18 +31,16 @@ class ViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-    
-    
-    
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return petitions.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        cell.textLabel?.text = "Title goes here"
-        cell.detailTextLabel?.text = "Subtitle goes here"
+        let petition = petitions[indexPath.row]
+        cell.textLabel?.text = petition.title
+        cell.detailTextLabel?.text = petition.body
         return cell
     }
     
