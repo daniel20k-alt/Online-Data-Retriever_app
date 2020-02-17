@@ -14,7 +14,8 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
    
-        let urlString = "https://www.whitehouse.gov/v1/petitions.json?limit=100"
+//        let urlString = "https://www.api.whitehouse.gov/v1/petitions.json?limit=100"
+        let urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
         
         if let url = URL(string: urlString) {
             if let data = try? Data(contentsOf: url) {
@@ -36,8 +37,9 @@ class ViewController: UITableViewController {
         return petitions.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+                tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
+
         let petition = petitions[indexPath.row]
         cell.textLabel?.text = petition.title
         cell.detailTextLabel?.text = petition.body
