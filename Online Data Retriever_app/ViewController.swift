@@ -37,7 +37,7 @@ class ViewController: UITableViewController {
         return petitions.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-                tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+//                tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
         let petition = petitions[indexPath.row]
